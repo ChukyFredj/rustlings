@@ -7,7 +7,7 @@
 // Execute `rustlings hint traits5` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+// Ici j'ai rajouter impl SomeTrait + OtherTrait dans la fonction some_func pour que la fonction some_func prenne en paramètre un item qui implémente SomeTrait et OtherTrait
 
 pub trait SomeTrait {
     fn some_function(&self) -> bool {
@@ -30,7 +30,7 @@ impl SomeTrait for OtherStruct {}
 impl OtherTrait for OtherStruct {}
 
 // YOU MAY ONLY CHANGE THE NEXT LINE
-fn some_func(item: ??) -> bool {
+fn some_func(item: impl SomeTrait + OtherTrait) -> bool {
     item.some_function() && item.other_function()
 }
 

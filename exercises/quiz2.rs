@@ -20,7 +20,11 @@
 //
 // No hints this time!
 
-// I AM NOT DONE
+// Ici j'ai rajouter un match pour traiter les commandes et ajouter les strings dans le tableau output en fonction de la commande
+// j'ai rajouter Command::Uppercase => output.push(string.to_uppercase()), pour mettre la chaine en majuscule
+// j'ai rajouter Command::Trim => output.push(string.trim().to_string()), pour enlever les espaces
+// j'ai rajouter Command::Append(n) => output.push(string.clone() + &"bar".repeat(*n)), pour ajouter "bar" n fois a la chaine
+// j'ai rajouter output: Vec<String> = vec![]; pour initialiser le tableau output
 
 pub enum Command {
     Uppercase,
@@ -32,11 +36,16 @@ mod my_module {
     use super::Command;
 
     // TODO: Complete the function signature!
-    pub fn transformer(input: ???) -> ??? {
+    pub fn transformer(input: Vec<(String, Command)>) -> Vec<String>{
         // TODO: Complete the output declaration!
-        let mut output: ??? = vec![];
+        let mut output: Vec<String> = vec![];
         for (string, command) in input.iter() {
             // TODO: Complete the function body. You can do it!
+            match command {
+                Command::Uppercase => output.push(string.to_uppercase()),
+                Command::Trim => output.push(string.trim().to_string()),
+                Command::Append(n) => output.push(string.clone() + &"bar".repeat(*n)),
+            }
         }
         output
     }
@@ -45,7 +54,7 @@ mod my_module {
 #[cfg(test)]
 mod tests {
     // TODO: What do we need to import to have `transformer` in scope?
-    use ???;
+    use super::my_module::transformer;
     use super::Command;
 
     #[test]

@@ -6,18 +6,17 @@
 // Execute `rustlings hint generics2` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+/// Ici j'ai modifier Wrapper pour qu'il soit générique et j'ai rajouter T dans Wrapper<T> et value: T dans Wrapper
 
-struct Wrapper {
-    value: u32,
+struct Wrapper<T> {
+    value: T,
 }
 
-impl Wrapper {
-    pub fn new(value: u32) -> Self {
+impl<T> Wrapper<T> {
+    fn new(value: T) -> Self {
         Wrapper { value }
     }
 }
-
 #[cfg(test)]
 mod tests {
     use super::*;

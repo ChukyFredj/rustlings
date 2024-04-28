@@ -2,17 +2,18 @@
 //
 // Execute `rustlings hint if3` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+/// En regardant la fonction animal_habitat, on peut voir qu'elle prend un animal en paramètre et renvoie un habitat en fonction de l'animal.
+/// j'ai vu les erreur suivante: 2.0 error: mismatched types donc j'ai enlevé les .0 pour les identifier et "Unknown" qui été dans le dernier else et remplacer par 4
 
 pub fn animal_habitat(animal: &str) -> &'static str {
     let identifier = if animal == "crab" {
         1
     } else if animal == "gopher" {
-        2.0
+        2
     } else if animal == "snake" {
         3
     } else {
-        "Unknown"
+        4
     };
 
     // DO NOT CHANGE THIS STATEMENT BELOW

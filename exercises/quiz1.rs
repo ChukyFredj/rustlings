@@ -13,10 +13,18 @@
 //
 // No hints this time ;)
 
-// I AM NOT DONE
+// J'ai vu que dans les tests, dans price 1 et price 2, le prix est 70 et 80, donc doublé, donc j'ai mis que c'est le prix de base * 2
+// Pour price 3, le prix est 41, donc j'ai mis que c'est le prix de base
+// Pour price 4, le prix est 65, donc j'ai mis que c'est le prix de base
+// J'ai mis les conditions dans la fonction pour que si la quantité est supérieure à 40, le prix soit la quantité, sinon le prix est la quantité * 2
 
-// Put your function here!
-// fn calculate_price_of_apples {
+fn calculate_price_of_apples (quantity: i32) -> i32 {
+    if quantity > 40 {
+        quantity
+    } else {
+        quantity * 2
+    }
+}
 
 // Don't modify this function!
 #[test]

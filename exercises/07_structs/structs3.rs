@@ -7,7 +7,9 @@
 // Execute `rustlings hint structs3` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+/// Ici j'ai défini le reetour de is_international comme un booléen et get_fees comme un u32
+/// ensuite je retourne self.sender_country != self.recipient_country pour is_international comme ça j'ai true ou false
+/// et pour get_fees je retourne self.weight_in_grams * cents_per_gram pour avoir le prix du transport
 
 #[derive(Debug)]
 struct Package {
@@ -31,12 +33,12 @@ impl Package {
         }
     }
 
-    fn is_international(&self) -> ??? {
-        // Something goes here...
+    fn is_international(&self) -> bool {
+        self.sender_country != self.recipient_country
     }
 
-    fn get_fees(&self, cents_per_gram: u32) -> ??? {
-        // Something goes here...
+    fn get_fees(&self, cents_per_gram: u32) -> u32 {
+        self.weight_in_grams * cents_per_gram
     }
 }
 

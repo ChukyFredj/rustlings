@@ -16,49 +16,55 @@
 //
 // Execute `rustlings hint quiz3` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+/// Ici grace à l'indice j'ai pu comprendre que je devais rajouter un trait bound Display pour que le grade soit affichable
+/// jai aussi rajouter <T> dans ReportCard<T> pour que le grade soit générique
+/// j'ai aussi rajouter T: Display dans impl<T: Display> ReportCard<T> pour que le grade soit affichable
+/// j'ai aussi rajouter grade: T dans ReportCard pour que le grade soit générique
+/// j'ai aussi rajouter grade: "A+" dans le test generate_alphabetic_report_card pour que le grade soit alphabétique
 
-pub struct ReportCard {
-    pub grade: f32,
-    pub student_name: String,
-    pub student_age: u8,
-}
+    use std::fmt::Display;
 
-impl ReportCard {
-    pub fn print(&self) -> String {
-        format!("{} ({}) - achieved a grade of {}",
-            &self.student_name, &self.student_age, &self.grade)
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn generate_numeric_report_card() {
-        let report_card = ReportCard {
-            grade: 2.1,
-            student_name: "Tom Wriggle".to_string(),
-            student_age: 12,
-        };
-        assert_eq!(
-            report_card.print(),
-            "Tom Wriggle (12) - achieved a grade of 2.1"
-        );
+    pub struct ReportCard<T> {
+        pub grade: T,
+        pub student_name: String,
+        pub student_age: u8,
     }
 
-    #[test]
-    fn generate_alphabetic_report_card() {
-        // TODO: Make sure to change the grade here after you finish the exercise.
-        let report_card = ReportCard {
-            grade: 2.1,
-            student_name: "Gary Plotter".to_string(),
-            student_age: 11,
-        };
-        assert_eq!(
-            report_card.print(),
-            "Gary Plotter (11) - achieved a grade of A+"
-        );
+    impl<T: Display> ReportCard<T> {
+        pub fn print(&self) -> String {
+            format!("{} ({}) - achieved a grade of {}",
+                &self.student_name, &self.student_age, &self.grade)
+        }
     }
-}
+
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+
+        #[test]
+        fn generate_numeric_report_card() {
+            let report_card = ReportCard {
+                grade: 2.1,
+                student_name: "Tom Wriggle".to_string(),
+                student_age: 12,
+            };
+            assert_eq!(
+                report_card.print(),
+                "Tom Wriggle (12) - achieved a grade of 2.1"
+            );
+        }
+
+        #[test]
+        fn generate_alphabetic_report_card() {
+            // TODO: Make sure to change the grade here after you finish the exercise.
+            let report_card = ReportCard {
+                grade: "A+",
+                student_name: "Gary Plotter".to_string(),
+                student_age: 11,
+            };
+            assert_eq!(
+                report_card.print(),
+                "Gary Plotter (11) - achieved a grade of A+"
+            );
+        }
+    }
